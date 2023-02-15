@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvn2xay2tbt4g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3wnch"]
+size = Vector3(1, 2, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_m01ul"]
+size = Vector3(1, 2, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_t8qeu"]
+size = Vector3(100, 1, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_disbv"]
+size = Vector3(100, 1, 10)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="TempLevel" type="Node3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="TempLevel"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TempLevel/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51628, 0)
+shape = SubResource("BoxShape3D_3wnch")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TempLevel/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51628, 0)
+mesh = SubResource("BoxMesh_m01ul")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="TempLevel"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TempLevel/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.51678, 0)
+shape = SubResource("BoxShape3D_3wnch")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="TempLevel/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.5005, 0)
+mesh = SubResource("BoxMesh_m01ul")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="TempLevel"]
+
+[node name="Ground" type="MeshInstance3D" parent="TempLevel/StaticBody3D3"]
+mesh = SubResource("BoxMesh_t8qeu")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TempLevel/StaticBody3D3"]
+shape = SubResource("BoxShape3D_disbv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.357798, -0.933799, 1.80749e-08, 0.602441, 0.230833, 0.764055, -0.713474, -0.273377, 0.645151, 0, 42.9395, 26.6759)
