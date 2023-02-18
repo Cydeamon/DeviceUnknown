@@ -1,8 +1,14 @@
 extends CharacterBody3D
 
-
 @export var speed = 5.0
 @export var jump_velocity = 4.5
+
+@export_category("Abilities")
+@export var ability_active_double_jump = false
+@export var ability_active_dash = false
+@export var ability_active_rockets = false
+@export var ability_active_lazer = false
+@export var ability_active_flame = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -20,7 +26,7 @@ func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y))
 	if direction:
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
@@ -29,3 +35,4 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, speed)
 
 	move_and_slide()
+	$RobotBottom/AnimationPlayer.speed_scale = velocity.x / speed

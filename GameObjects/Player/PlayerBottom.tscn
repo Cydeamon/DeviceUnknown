@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfavdg8oxdjl"]
+
+[ext_resource type="PackedScene" uid="uid://b3kqouvrc2tfg" path="res://Assets/Models/RobotBottom.glb" id="1_4n6t2"]
+
+[node name="RobotBottom" instance=ExtResource("1_4n6t2")]
+
+[node name="Skeleton3D" parent="TracksArmature" index="0"]
+bones/0/position = Vector3(-8.89792e-17, 0.104273, -0.284787)
+bones/0/rotation = Quaternion(-0.859198, 1.33397e-16, 1.56959e-16, 0.511643)
+bones/1/rotation = Quaternion(-0.234914, -2.05622e-16, -1.47302e-16, 0.972016)
+bones/2/rotation = Quaternion(-0.0777793, -1.87952e-17, 3.76255e-17, 0.996971)
+bones/3/rotation = Quaternion(-0.162965, 1.17649e-07, -1.86186e-08, 0.986632)
+bones/4/rotation = Quaternion(-0.15961, -9.77918e-11, -3.73898e-08, 0.98718)
+bones/5/rotation = Quaternion(-0.440677, -2.91641e-10, -1.00258e-07, 0.897666)
+bones/6/rotation = Quaternion(-0.208513, -1.15072e-07, -2.3571e-08, 0.978019)
+bones/7/rotation = Quaternion(-0.00325475, 1.19463e-07, -8.67466e-09, 0.999995)
+bones/9/rotation = Quaternion(-0.0471093, 5.4419e-15, 1.12317e-08, 0.998889)
+bones/10/rotation = Quaternion(0.0119249, 5.76978e-10, -3.73777e-09, 0.999929)
+bones/11/rotation = Quaternion(-0.28012, -5.28695e-10, 6.36785e-08, 0.959965)
+bones/12/rotation = Quaternion(-0.343226, 9.2995e-11, 7.75323e-08, 0.939253)
+bones/13/rotation = Quaternion(-0.23141, -2.50554e-09, 5.47235e-08, 0.972856)
+bones/14/rotation = Quaternion(-0.0921913, 4.27552e-10, 2.94656e-08, 0.995741)
+bones/15/rotation = Quaternion(-0.109314, -3.42415e-15, 2.60625e-08, 0.994007)
+bones/16/rotation = Quaternion(-0.256316, -6.43228e-15, 6.11106e-08, 0.966593)
+bones/17/rotation = Quaternion(-0.135068, 1.70151e-10, 3.37978e-08, 0.990836)
+bones/18/rotation = Quaternion(-0.140865, 4.06346e-09, 3.22802e-08, 0.990029)
+bones/19/rotation = Quaternion(-0.0168253, -3.93178e-09, 4.17498e-09, 0.999859)
+
+[node name="AnimationPlayer" parent="." index="3"]
+autoplay = "TracksMoveForward"
+reset_on_save = false

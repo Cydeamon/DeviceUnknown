@@ -11,12 +11,13 @@
 [node name="Level" parent="LevelContainer" instance=ExtResource("1_gp5ge")]
 
 [node name="Camera" type="Camera3D" parent="."]
-v_offset = 2.0
+v_offset = 1.0
 current = true
+fov = 70.0
 script = ExtResource("2_07vcb")
 lerp_speed = 8.0
 target_path = NodePath("../Player")
-offset = Vector3(0, 0, 10)
+offset = Vector3(2, 0, 4)
 
 [node name="Player" parent="." instance=ExtResource("2_f24xr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.5, 0)

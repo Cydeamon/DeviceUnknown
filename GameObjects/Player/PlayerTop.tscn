@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cegmmbvc3s4q3"]
+
+[ext_resource type="PackedScene" uid="uid://dqjc4q2uoct30" path="res://Assets/Models/RobotTop.glb" id="1_vt1t6"]
+
+[node name="RobotTop" instance=ExtResource("1_vt1t6")]
