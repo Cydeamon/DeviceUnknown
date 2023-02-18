@@ -1,19 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://bmxgp333jsjmh"]
+[gd_scene load_steps=7 format=3 uid="uid://bmxgp333jsjmh"]
 
 [ext_resource type="Script" path="res://Sources/Game.gd" id="1_3xyon"]
 [ext_resource type="PackedScene" uid="uid://cvn2xay2tbt4g" path="res://Levels/Level1.tscn" id="1_gp5ge"]
 [ext_resource type="Script" path="res://Sources/Camera.gd" id="2_07vcb"]
 [ext_resource type="PackedScene" uid="uid://dtlevh1pvx6mt" path="res://GameObjects/Player/Player.tscn" id="2_f24xr"]
+[ext_resource type="Environment" uid="uid://bib1m1aesqym" path="res://Environment.tres" id="2_r3v8h"]
 [ext_resource type="PackedScene" uid="uid://daucgmqnarnqv" path="res://GameObjects/hook.tscn" id="3_n08tt"]
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_3xyon")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_r3v8h")
 
 [node name="LevelContainer" type="Node3D" parent="."]
 
 [node name="Level" parent="LevelContainer" instance=ExtResource("1_gp5ge")]
 
 [node name="Camera" type="Camera3D" parent="."]
+environment = ExtResource("2_r3v8h")
 v_offset = 1.0
 current = true
 fov = 70.0
@@ -27,6 +32,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.5, 0)
 
 [node name="Player" parent="." node_paths=PackedStringArray("hook_object") instance=ExtResource("2_f24xr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.5, 0)
+speed = 3.0
 hook_object = NodePath("../Hook")
 ability_active_double_jump = true
 ability_active_dash = true

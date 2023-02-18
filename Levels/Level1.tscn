@@ -1,4 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvn2xay2tbt4g"]
+[gd_scene load_steps=8 format=3 uid="uid://cvn2xay2tbt4g"]
+
+[ext_resource type="Texture2D" uid="uid://crts4ky225a8d" path="res://ground_noise_texture.tres" id="1_ot21u"]
+[ext_resource type="Texture2D" uid="uid://crd3eesgdgxsm" path="res://ground_noise_texture_normal.tres" id="2_ik0hp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3wnch"]
 size = Vector3(1, 2, 10)
@@ -7,7 +10,17 @@ size = Vector3(1, 2, 10)
 size = Vector3(1, 2, 10)
 
 [sub_resource type="BoxMesh" id="BoxMesh_t8qeu"]
-size = Vector3(100, 1, 10)
+lightmap_size_hint = Vector2i(5004, 2516)
+size = Vector3(500, 1, 500)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tneci"]
+albedo_color = Color(0.231373, 0.054902, 0, 1)
+albedo_texture = ExtResource("1_ot21u")
+roughness = 0.82
+normal_enabled = true
+normal_scale = 6.67
+normal_texture = ExtResource("2_ik0hp")
+uv1_scale = Vector3(70, 70, 70)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_disbv"]
 size = Vector3(100, 1, 10)
@@ -43,6 +56,12 @@ skeleton = NodePath("../..")
 [node name="Ground" type="MeshInstance3D" parent="TempLevel/StaticBody3D3"]
 mesh = SubResource("BoxMesh_t8qeu")
 skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_tneci")
+
+[node name="Ground2" type="MeshInstance3D" parent="TempLevel/StaticBody3D3"]
+mesh = SubResource("BoxMesh_t8qeu")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_tneci")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TempLevel/StaticBody3D3"]
 shape = SubResource("BoxShape3D_disbv")
