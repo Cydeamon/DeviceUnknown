@@ -23,16 +23,16 @@ v_offset = 1.0
 current = true
 fov = 70.0
 script = ExtResource("2_07vcb")
-lerp_speed = 8.0
+lerp_speed = 4.0
 target_path = NodePath("../Player")
-offset = Vector3(2, 0, 4)
+offset = Vector3(2, -1, 4)
 
 [node name="Hook" parent="." instance=ExtResource("3_n08tt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.5, 0)
 
 [node name="Player" parent="." node_paths=PackedStringArray("hook_object") instance=ExtResource("2_f24xr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.5, 0)
-speed = 3.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.48399, 0)
+speed = 2.5
 hook_object = NodePath("../Hook")
 ability_active_double_jump = true
 ability_active_dash = true

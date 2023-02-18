@@ -23,7 +23,7 @@ normal_texture = ExtResource("2_ik0hp")
 uv1_scale = Vector3(70, 70, 70)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_disbv"]
-size = Vector3(100, 1, 10)
+size = Vector3(500, 1, 500)
 
 [node name="Node3D" type="Node3D"]
 
@@ -51,7 +51,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.5005, 0)
 mesh = SubResource("BoxMesh_m01ul")
 skeleton = NodePath("../..")
 
-[node name="StaticBody3D3" type="StaticBody3D" parent="TempLevel"]
+[node name="StaticBody3D3" type="RigidBody3D" parent="TempLevel"]
+continuous_cd = true
+max_contacts_reported = 2
+contact_monitor = true
+can_sleep = false
+freeze = true
 
 [node name="Ground" type="MeshInstance3D" parent="TempLevel/StaticBody3D3"]
 mesh = SubResource("BoxMesh_t8qeu")
@@ -67,4 +72,4 @@ surface_material_override/0 = SubResource("StandardMaterial3D_tneci")
 shape = SubResource("BoxShape3D_disbv")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.357798, -0.933799, 1.80749e-08, 0.602441, 0.230833, 0.764055, -0.713474, -0.273377, 0.645151, 0, 42.9395, 26.6759)
+transform = Transform3D(0.357798, -0.933799, -1.91171e-07, 0.602441, 0.230834, 0.764055, -0.713474, -0.273378, 0.645151, 0, 42.9395, 26.6759)

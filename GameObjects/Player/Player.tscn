@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtlevh1pvx6mt"]
+[gd_scene load_steps=8 format=3 uid="uid://dtlevh1pvx6mt"]
 
 [ext_resource type="Script" path="res://Sources/GameObjects/Player/Player.gd" id="1_rpkt5"]
 [ext_resource type="PackedScene" uid="uid://cegmmbvc3s4q3" path="res://GameObjects/Player/PlayerTop.tscn" id="2_su1v2"]
@@ -7,6 +7,43 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yk65d"]
 radius = 0.41
 height = 1.55
+
+[sub_resource type="Animation" id="Animation_y8nbg"]
+resource_name = "JumpLight"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OmniLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(4.59479, 9.84916, 0.052556),
+"update": 0,
+"values": [0.0, 16.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_1bcts"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OmniLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u2r4v"]
+_data = {
+"JumpLight": SubResource("Animation_y8nbg"),
+"RESET": SubResource("Animation_1bcts")
+}
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -22,3 +59,20 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1,
 
 [node name="RobotTop" parent="." instance=ExtResource("2_su1v2")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="RobotTop"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -8.5734e-09, 1.46049, 0.196136)
+shadow_enabled = true
+spot_range = 8.44035
+spot_angle = 22.5
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.10761, 0)
+light_color = Color(1, 0.184314, 0, 1)
+light_energy = 0.0
+omni_range = 0.81
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_u2r4v")
+}

@@ -14,6 +14,8 @@ extends CharacterBody3D
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+var double_jump_used = false
+var target_rotation_y = 0
 
 func _ready():
 	$RobotTop/AnimationPlayer.play("Idle")
@@ -21,15 +23,36 @@ func _ready():
 func _process(delta):
 	if hook_object:
 		hook_object.global_transform = $RobotTop/Armature/MiddleBody/HookPoint.global_transform
+		
+	if velocity.x != 0:
+		if velocity.x < 0:
+			target_rotation_y = -PI / 2
+		else:			
+			target_rotation_y = PI / 2
+			
+	if target_rotation_y:
+		$RobotTop.rotation.y = move_toward($RobotTop.rotation.y, target_rotation_y, delta * 10)
 
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
+	else:
+		double_jump_used = false
 
 	# Handle Jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = jump_velocity
+	if Input.is_action_just_pressed("jump"):
+		var can_jump = is_on_floor()
+		
+		if !double_jump_used && ability_active_double_jump && !is_on_floor():
+			can_jump = true
+			double_jump_used = true
+		
+		if can_jump:
+			velocity.y = jump_velocity
+			$AnimationPlayer.play("JumpLight")
+		
+		
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.

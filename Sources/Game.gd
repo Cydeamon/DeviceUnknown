@@ -4,4 +4,4 @@ func _ready():
 	$Hook/CollisionShape3D.disabled = true
 
 func _process(delta):
-	pass
+	$Camera.flip_offset = $Player/RobotTop.rotation.y < 0
