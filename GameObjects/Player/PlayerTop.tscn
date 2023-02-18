@@ -3,3 +3,29 @@
 [ext_resource type="PackedScene" uid="uid://dqjc4q2uoct30" path="res://Assets/Models/RobotTop.glb" id="1_vt1t6"]
 
 [node name="RobotTop" instance=ExtResource("1_vt1t6")]
+
+[node name="Armature" parent="." index="0"]
+transform = Transform3D(1.39773e-07, -0.445256, 0, 0.445256, 1.39773e-07, 0, 0, 0, 0.445256, 0.00567669, 0.785622, 0)
+
+[node name="Head" parent="Armature" index="0"]
+lod_bias = 7.4
+
+[node name="HookPoint" type="Node3D" parent="Armature/MiddleBody" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.004, 0.745, 0.139)
+
+[node name="Skeleton3D" parent="Armature" index="2"]
+bones/0/rotation = Quaternion(0.46123, 0.0384057, 0.154064, 0.872958)
+bones/1/rotation = Quaternion(0.557876, 0.0692058, 0.355085, 0.746927)
+bones/2/rotation = Quaternion(0.245509, 0.0649364, 0.263857, 0.930531)
+bones/3/position = Vector3(-0.544014, 0.0530031, 1.25095)
+bones/3/rotation = Quaternion(1.12931e-07, 7.07766e-08, -0.999964, 0.00853986)
+bones/3/scale = Vector3(0.207031, 0.207031, 0.207031)
+bones/4/rotation = Quaternion(-0.297179, 0.400227, 0.866004, 0.0392393)
+bones/5/rotation = Quaternion(0.69331, -0.29541, -0.240509, 0.611727)
+bones/6/rotation = Quaternion(0.251586, 0.106424, -0.24319, 0.930718)
+bones/7/position = Vector3(-0.679274, -0.195109, 1.04282)
+bones/7/rotation = Quaternion(-0.00630905, -0.981168, 0.03253, 0.190291)
+bones/7/scale = Vector3(0.15938, 0.15938, 0.15938)
+
+[node name="AnimationPlayer" parent="." index="1"]
+playback_default_blend_time = 0.3

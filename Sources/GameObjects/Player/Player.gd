@@ -3,6 +3,8 @@ extends CharacterBody3D
 @export var speed = 5.0
 @export var jump_velocity = 4.5
 
+@export var hook_object : Node3D
+
 @export_category("Abilities")
 @export var ability_active_double_jump = false
 @export var ability_active_dash = false
@@ -13,6 +15,12 @@ extends CharacterBody3D
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+func _ready():
+	$RobotTop/AnimationPlayer.play("Idle")
+
+func _process(delta):
+	if hook_object:
+		hook_object.global_transform = $RobotTop/Armature/MiddleBody/HookPoint.global_transform
 
 func _physics_process(delta):
 	# Add the gravity.

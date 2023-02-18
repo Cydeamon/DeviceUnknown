@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmxgp333jsjmh"]
+[gd_scene load_steps=6 format=3 uid="uid://bmxgp333jsjmh"]
 
+[ext_resource type="Script" path="res://Sources/Game.gd" id="1_3xyon"]
 [ext_resource type="PackedScene" uid="uid://cvn2xay2tbt4g" path="res://Levels/Level1.tscn" id="1_gp5ge"]
 [ext_resource type="Script" path="res://Sources/Camera.gd" id="2_07vcb"]
 [ext_resource type="PackedScene" uid="uid://dtlevh1pvx6mt" path="res://GameObjects/Player/Player.tscn" id="2_f24xr"]
+[ext_resource type="PackedScene" uid="uid://daucgmqnarnqv" path="res://GameObjects/hook.tscn" id="3_n08tt"]
 
 [node name="Game" type="Node3D"]
+script = ExtResource("1_3xyon")
 
 [node name="LevelContainer" type="Node3D" parent="."]
 
@@ -19,5 +22,14 @@ lerp_speed = 8.0
 target_path = NodePath("../Player")
 offset = Vector3(2, 0, 4)
 
-[node name="Player" parent="." instance=ExtResource("2_f24xr")]
+[node name="Hook" parent="." instance=ExtResource("3_n08tt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.5, 0)
+
+[node name="Player" parent="." node_paths=PackedStringArray("hook_object") instance=ExtResource("2_f24xr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.5, 0)
+hook_object = NodePath("../Hook")
+ability_active_double_jump = true
+ability_active_dash = true
+ability_active_rockets = true
+ability_active_lazer = true
+ability_active_flame = true
