@@ -31,7 +31,7 @@ offset = Vector3(2, -1, 4)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.5, 0)
 
 [node name="Player" parent="." node_paths=PackedStringArray("hook_object") instance=ExtResource("2_f24xr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.48399, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.48399, 0)
 speed = 2.5
 hook_object = NodePath("../Hook")
 ability_active_double_jump = true
