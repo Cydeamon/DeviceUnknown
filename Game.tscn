@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bmxgp333jsjmh"]
+[gd_scene load_steps=9 format=3 uid="uid://bmxgp333jsjmh"]
 
 [ext_resource type="Script" path="res://Sources/Game.gd" id="1_3xyon"]
 [ext_resource type="PackedScene" uid="uid://cvn2xay2tbt4g" path="res://Levels/Level1.tscn" id="1_gp5ge"]
@@ -7,6 +7,9 @@
 [ext_resource type="Environment" uid="uid://bib1m1aesqym" path="res://Environment.tres" id="2_r3v8h"]
 [ext_resource type="PackedScene" uid="uid://daucgmqnarnqv" path="res://GameObjects/hook.tscn" id="3_n08tt"]
 [ext_resource type="PackedScene" uid="uid://brj8xpsqggnn8" path="res://UI.tscn" id="7_7dco0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fldag"]
+size = Vector3(100000, 5000, 0)
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_3xyon")
@@ -28,19 +31,26 @@ lerp_speed = 4.0
 target_path = NodePath("../Player")
 offset = Vector3(2, -1, 4)
 
-[node name="Hook" parent="." instance=ExtResource("3_n08tt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.5, 0)
-
 [node name="Player" parent="." node_paths=PackedStringArray("hook_object") instance=ExtResource("2_f24xr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.48399, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.35391, 1, 0)
 speed = 4.0
-hook_object = NodePath("../Hook")
+hook_object = NodePath("Hook")
+active_weapon = 1
 ability_active_double_jump = true
 ability_active_dash = true
 ability_active_rockets = true
 ability_active_lazer = true
 ability_active_flame = true
 
+[node name="Hook" parent="Player" instance=ExtResource("3_n08tt")]
+
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="UI" parent="UI" instance=ExtResource("7_7dco0")]
+
+[node name="MouseRayCastCatcher" type="Area3D" parent="."]
+collision_layer = 32768
+collision_mask = 32768
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MouseRayCastCatcher"]
+shape = SubResource("BoxShape3D_fldag")

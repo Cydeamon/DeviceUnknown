@@ -6,8 +6,9 @@ extends CharacterBody3D
 
 @export var speed = 5.0
 @export var jump_velocity = 4.5
-
 @export var hook_object : Node3D
+@export var aim_target_point : Vector3
+@export var active_weapon = Weapon.NO_WEAPON
 
 @export_category("Abilities")
 @export var ability_active_double_jump = false
@@ -23,12 +24,20 @@ extends CharacterBody3D
 ##########################################################################
 ##########################################################################
 
+enum Weapon { NO_WEAPON, LAZER, ROCKETS, FIRE }
+
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var double_jump_used = false
 var target_rotation_y = 0
 
+var skeleton : Skeleton3D
+var left_arm_shoulder = null
+var right_arm_shoulder = null
+
 var is_dash_cooling_down = false
 var is_dashing = false
+var is_firing = false
+var is_aiming = false
 
 ##########################################################################
 ##########################################################################
@@ -36,12 +45,69 @@ var is_dashing = false
 
 func _ready():
 	$RobotTop/AnimationPlayer.play("Idle")
+	skeleton = $RobotTop/Armature/Skeleton3D
+	left_arm_shoulder = skeleton.find_bone("UpperArmLeft")
+	right_arm_shoulder = skeleton.find_bone("UpperArmRight")
+	
 
 func _process(delta):
 	if hook_object:
 		hook_object.global_transform = $RobotTop/Armature/MiddleBody/HookPoint.global_transform
 		
+	check_fire()
+		
+	if is_firing:
+		if !$RobotTop/AnimationPlayer.current_animation == "FireLeftStart" && !is_aiming:
+			$RobotTop/AnimationPlayer.play("FireLeftArm")
+			is_aiming = true
+			
+		aim_left_arm_at_mouse_position()
+		
+		
+func aim_left_arm_at_mouse_position():
+	var left_shoulder_global_pos : Vector3
 
+	left_shoulder_global_pos = global_position + skeleton.get_bone_global_pose(left_arm_shoulder).origin
+	var direction = Vector3(left_shoulder_global_pos - get_world_mouse_position()).normalized()
+	var angle = Vector3.RIGHT.angle_to(direction)
+	angle = -sign(direction.y) * angle
+	var quat = Quaternion(Vector3.RIGHT if target_rotation_y < 0 else Vector3.LEFT, deg_to_rad(90)) * Quaternion(Vector3.FORWARD, angle)
+	
+	skeleton.set_bone_pose_rotation(left_arm_shoulder, quat.normalized())
+	
+func get_world_mouse_position():
+	var result = Vector3.ZERO
+	var camera = get_viewport().get_camera_3d()
+	var mouse_pos = get_viewport().get_mouse_position()
+	var ray_start_pos = camera.project_ray_origin(mouse_pos)
+	var ray_end_pos = camera.project_ray_normal(mouse_pos) * 2000
+	
+	var ray_params = PhysicsRayQueryParameters3D.create(ray_start_pos, ray_end_pos)
+	ray_params.collide_with_areas = true
+	ray_params.collide_with_bodies = false
+	ray_params.collision_mask = 0b1000000000000000 # Check collisions on 16 layer
+	
+	var ray_cast_result = get_world_3d().direct_space_state.intersect_ray(ray_params)
+	
+	if (ray_cast_result.has("position")):
+		result = ray_cast_result["position"]
+	
+	return result
+	
+	
+func check_fire():
+	if Input.is_action_pressed("fire"):
+		is_firing = true
+	else:
+		is_aiming = false
+		
+		if is_firing:
+			$RobotTop/AnimationPlayer.stop()
+			$RobotTop/AnimationPlayer.play("FireLeftArmEnd")
+			$RobotTop/AnimationPlayer.play("Idle")
+			is_firing = false
+
+	
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
@@ -82,7 +148,7 @@ func _physics_process(delta):
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var input_dir = Input.get_vector("move_left", "move_right", "ui_up", "ui_down")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y))
 	
 	if direction:
