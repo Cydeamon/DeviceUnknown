@@ -35,4 +35,5 @@ ssil_enabled = true
 sdfgi_enabled = true
 sdfgi_use_occlusion = true
 sdfgi_cascades = 5
+glow_enabled = true
 volumetric_fog_density = 0.0007

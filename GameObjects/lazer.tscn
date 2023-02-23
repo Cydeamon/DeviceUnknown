@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cl5aq0iqkwu5r"]
+
+[ext_resource type="Material" uid="uid://bhhfrkulq7eas" path="res://Materials/lazer.tres" id="1_aff11"]
+[ext_resource type="Script" path="res://Sources/GameObjects/lazer.gd" id="2_u10yk"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8if35"]
+size = Vector3(0.05, 0.05, 0.05)
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("2_u10yk")
+
+[node name="Lazer" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_aff11")
+mesh = SubResource("BoxMesh_8if35")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 5, 0)
+debug_shape_custom_color = Color(0, 1, 0.0823529, 1)

@@ -51,6 +51,8 @@ func _ready():
 	left_arm_shoulder = skeleton.find_bone("UpperArmLeft")
 	right_arm_shoulder = skeleton.find_bone("UpperArmRight")
 	
+	$RobotTop/AnimationPlayer.connect("animation_finished", _on_robot_top_animation_finished)
+	
 
 func _process(delta):
 	if hook_object:
@@ -62,14 +64,16 @@ func _process(delta):
 		if current_arm == Arm.LEFT:
 			if !$RobotTop/AnimationPlayer.current_animation == "FireLeftStart" && !is_aiming:
 				$RobotTop/AnimationPlayer.play("FireLeftArm")
-				is_aiming = true
 		else:
 			if !$RobotTop/AnimationPlayer.current_animation == "FireRightStart" && !is_aiming:
 				$RobotTop/AnimationPlayer.play("FireRightArm")
-				is_aiming = true
 				
 		aim_arm_at_mouse_position()
 		
+		if is_aiming:
+			fire()
+	else:		
+		$Lazer.hide()
 		
 func aim_arm_at_mouse_position():
 	var shoulder_global_pos : Vector3
@@ -138,6 +142,17 @@ func check_fire():
 				$RobotTop/AnimationPlayer.play("Idle")
 				is_firing = false
 
+
+func fire():
+	if active_weapon == Weapon.LAZER:
+		fire_lazer()
+		
+
+func fire_lazer():
+	$Lazer.global_rotation = $RobotTop/Armature/Skeleton3D/LazerSpawnPoint.global_rotation
+	$Lazer.global_position = $RobotTop/Armature/Skeleton3D/LazerSpawnPoint.global_position	
+	$Lazer.show()	
+	
 	
 func _physics_process(delta):
 	# Add the gravity.
@@ -210,3 +225,9 @@ func _on_dash_timer_timeout():
 	$RobotTop/AnimationPlayer.stop()
 	$RobotTop/AnimationPlayer.play("DashEnd")
 	$RobotTop/AnimationPlayer.queue("Idle")
+
+
+func _on_robot_top_animation_finished(animation_name):
+	if animation_name == "FireLeftArm" || animation_name == "FireRightArm":
+		is_aiming = true
+	
