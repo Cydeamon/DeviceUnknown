@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dtlevh1pvx6mt"]
+[gd_scene load_steps=9 format=3 uid="uid://ccyc5kkfpps57"]
 
 [ext_resource type="Script" path="res://Sources/GameObjects/Player/Player.gd" id="1_rpkt5"]
 [ext_resource type="PackedScene" uid="uid://cegmmbvc3s4q3" path="res://GameObjects/Player/PlayerTop.tscn" id="2_su1v2"]
 [ext_resource type="PackedScene" uid="uid://dfavdg8oxdjl" path="res://GameObjects/Player/PlayerBottom.tscn" id="3_k08dp"]
-[ext_resource type="PackedScene" uid="uid://cl5aq0iqkwu5r" path="res://GameObjects/lazer.tscn" id="4_w1f63"]
+[ext_resource type="PackedScene" uid="uid://cl5aq0iqkwu5r" path="res://GameObjects/Lazer.tscn" id="4_w1f63"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yk65d"]
 radius = 0.41
@@ -63,8 +63,9 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1,
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1, 0)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="RobotTop"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.36309e-08, 1.4, 0.311838)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.97819e-09, 1.50408, 0.205397)
 light_energy = 4.806
+light_indirect_energy = 13.186
 shadow_enabled = true
 spot_range = 8.44035
 spot_angle = 22.5
@@ -88,6 +89,9 @@ one_shot = true
 
 [node name="DashTimer" type="Timer" parent="Timers"]
 wait_time = 0.15
+one_shot = true
+
+[node name="RocketReloadTimer" type="Timer" parent="Timers"]
 one_shot = true
 
 [node name="Lazer" parent="." instance=ExtResource("4_w1f63")]

@@ -1,0 +1,17 @@
+[gd_resource type="NoiseTexture2D" load_steps=3 format=3 uid="uid://prvheo3p4vnm"]
+
+[sub_resource type="Gradient" id="Gradient_cexns"]
+offsets = PackedFloat32Array(0, 0.778107)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_k00bd"]
+noise_type = 0
+fractal_lacunarity = 2.12
+domain_warp_amplitude = 20.0
+
+[resource]
+in_3d_space = true
+seamless = true
+as_normal_map = true
+bump_strength = 32.0
+color_ramp = SubResource("Gradient_cexns")
+noise = SubResource("FastNoiseLite_k00bd")

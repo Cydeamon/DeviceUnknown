@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://wd0mfjlbabqi"]
+
+[ext_resource type="Texture2D" uid="uid://crts4ky225a8d" path="res://ground_noise_texture.tres" id="1_a8c86"]
+[ext_resource type="Texture2D" uid="uid://crd3eesgdgxsm" path="res://ground_noise_texture_normal.tres" id="2_k6ee5"]
+
+[resource]
+albedo_color = Color(0.231373, 0.054902, 0, 1)
+albedo_texture = ExtResource("1_a8c86")
+roughness = 0.5
+normal_enabled = true
+normal_scale = 6.67
+normal_texture = ExtResource("2_k6ee5")
+uv1_scale = Vector3(70, 70, 70)

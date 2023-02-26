@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cvn2xay2tbt4g"]
+[gd_scene load_steps=5 format=3 uid="uid://cvn2xay2tbt4g"]
 
-[ext_resource type="Texture2D" uid="uid://crts4ky225a8d" path="res://ground_noise_texture.tres" id="1_ot21u"]
-[ext_resource type="Texture2D" uid="uid://crd3eesgdgxsm" path="res://ground_noise_texture_normal.tres" id="2_ik0hp"]
+[ext_resource type="Material" uid="uid://c5cnn13cgth07" path="res://Materials/cave_mat.tres" id="1_qvqo5"]
+[ext_resource type="PackedScene" uid="uid://v3x3vr4vjc5p" path="res://Assets/Level/Level1_Ground.tscn" id="2_boljo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3wnch"]
 size = Vector3(1, 2, 10)
@@ -9,27 +9,12 @@ size = Vector3(1, 2, 10)
 [sub_resource type="BoxMesh" id="BoxMesh_m01ul"]
 size = Vector3(1, 2, 10)
 
-[sub_resource type="BoxMesh" id="BoxMesh_t8qeu"]
-lightmap_size_hint = Vector2i(5004, 2516)
-size = Vector3(500, 1, 500)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tneci"]
-albedo_color = Color(0.231373, 0.054902, 0, 1)
-albedo_texture = ExtResource("1_ot21u")
-roughness = 0.5
-normal_enabled = true
-normal_scale = 6.67
-normal_texture = ExtResource("2_ik0hp")
-uv1_scale = Vector3(70, 70, 70)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_disbv"]
-size = Vector3(500, 1, 500)
-
 [node name="Node3D" type="Node3D"]
 
 [node name="TempLevel" type="Node3D" parent="."]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="TempLevel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.21843, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TempLevel/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51628, 0)
@@ -39,9 +24,10 @@ shape = SubResource("BoxShape3D_3wnch")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51628, 0)
 mesh = SubResource("BoxMesh_m01ul")
 skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("1_qvqo5")
 
 [node name="StaticBody3D4" type="StaticBody3D" parent="TempLevel"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.90653, 6.51305, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.90653, 8.73148, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TempLevel/StaticBody3D4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51628, 0)
@@ -51,9 +37,10 @@ shape = SubResource("BoxShape3D_3wnch")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51628, 0)
 mesh = SubResource("BoxMesh_m01ul")
 skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("1_qvqo5")
 
 [node name="StaticBody3D5" type="StaticBody3D" parent="TempLevel"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6737, 4.27979, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6737, 6.49822, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TempLevel/StaticBody3D5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51628, 0)
@@ -63,8 +50,10 @@ shape = SubResource("BoxShape3D_3wnch")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51628, 0)
 mesh = SubResource("BoxMesh_m01ul")
 skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("1_qvqo5")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="TempLevel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.21843, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TempLevel/StaticBody3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.51678, 0)
@@ -74,26 +63,9 @@ shape = SubResource("BoxShape3D_3wnch")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.5005, 0)
 mesh = SubResource("BoxMesh_m01ul")
 skeleton = NodePath("../..")
-
-[node name="StaticBody3D3" type="RigidBody3D" parent="TempLevel"]
-continuous_cd = true
-max_contacts_reported = 2
-contact_monitor = true
-can_sleep = false
-freeze = true
-
-[node name="Ground" type="MeshInstance3D" parent="TempLevel/StaticBody3D3"]
-mesh = SubResource("BoxMesh_t8qeu")
-skeleton = NodePath("../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_tneci")
-
-[node name="Ground2" type="MeshInstance3D" parent="TempLevel/StaticBody3D3"]
-mesh = SubResource("BoxMesh_t8qeu")
-skeleton = NodePath("../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_tneci")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TempLevel/StaticBody3D3"]
-shape = SubResource("BoxShape3D_disbv")
+surface_material_override/0 = ExtResource("1_qvqo5")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.357798, -0.933799, -1.91171e-07, 0.602441, 0.230834, 0.764055, -0.713474, -0.273378, 0.645151, 0, 42.9395, 26.6759)
+transform = Transform3D(0.578561, -0.749239, 0.322348, 0.39525, 0.603245, 0.692728, -0.713474, -0.273378, 0.645151, 71.567, 42.9395, 26.6759)
+
+[node name="level2" parent="." instance=ExtResource("2_boljo")]

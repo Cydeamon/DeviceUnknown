@@ -27,6 +27,8 @@ extends CharacterBody3D
 enum Weapon { NO_WEAPON, LAZER, ROCKETS, FIRE }
 enum Arm {LEFT, RIGHT}
 
+var rocket_scene = preload("res://GameObjects/Rocket.tscn")
+
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var double_jump_used = false
 var target_rotation_y = 0
@@ -83,6 +85,9 @@ func aim_arm_at_mouse_position():
 	var direction = Vector3(shoulder_global_pos - get_world_mouse_position()).normalized()
 	var angle = Vector3.RIGHT.angle_to(direction)
 	angle = -sign(direction.y) * angle
+	angle = angle - deg_to_rad(10)
+	print(rad_to_deg(angle))
+	print("---------")
 	var quat
 	
 	if target_rotation_y < 0:
@@ -96,7 +101,7 @@ func aim_arm_at_mouse_position():
 		if current_arm == Arm.RIGHT:
 			quat *= Quaternion(0, 1, 0, 0)
 	
-	skeleton.set_bone_pose_rotation(shoulder, quat.normalized())
+	skeleton.set_bone_pose_rotation(shoulder, quat)
 	
 	
 func get_world_mouse_position():
@@ -115,6 +120,8 @@ func get_world_mouse_position():
 	
 	if (ray_cast_result.has("position")):
 		result = ray_cast_result["position"]
+	
+	$DebugShape.global_position = result
 	
 	return result
 	
@@ -144,14 +151,26 @@ func check_fire():
 
 
 func fire():
+	aim_arm_at_mouse_position()
 	if active_weapon == Weapon.LAZER:
 		fire_lazer()
+	if active_weapon == Weapon.ROCKETS:
+		fire_rocket()
 		
 
 func fire_lazer():
 	$Lazer.global_rotation = $RobotTop/Armature/Skeleton3D/LazerSpawnPoint.global_rotation
 	$Lazer.global_position = $RobotTop/Armature/Skeleton3D/LazerSpawnPoint.global_position	
 	$Lazer.show()	
+	
+	
+func fire_rocket():	
+	if $Timers/RocketReloadTimer.is_stopped():
+		var rocket = rocket_scene.instantiate()
+		get_parent().add_child(rocket)
+		rocket.global_rotation = $RobotTop/Armature/Skeleton3D/RocketsSpawnPoint.global_rotation
+		rocket.global_position = $RobotTop/Armature/Skeleton3D/RocketsSpawnPoint.global_position
+		$Timers/RocketReloadTimer.start()
 	
 	
 func _physics_process(delta):

@@ -1,10 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://cl5aq0iqkwu5r"]
+[gd_scene load_steps=6 format=3 uid="uid://cl5aq0iqkwu5r"]
 
 [ext_resource type="Material" uid="uid://bhhfrkulq7eas" path="res://Materials/lazer.tres" id="1_aff11"]
 [ext_resource type="Script" path="res://Sources/GameObjects/lazer.gd" id="2_u10yk"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_8if35"]
 size = Vector3(0.05, 0.05, 0.05)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w7qcm"]
+albedo_color = Color(1, 0.258824, 0.258824, 1)
+emission_enabled = true
+emission = Color(1, 0.219608, 0.219608, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_4l1ci"]
+material = SubResource("StandardMaterial3D_w7qcm")
+size = Vector3(0.1, 0.1, 0.1)
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("2_u10yk")
@@ -16,3 +26,21 @@ mesh = SubResource("BoxMesh_8if35")
 [node name="RayCast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, 5, 0)
 debug_shape_custom_color = Color(0, 1, 0.0823529, 1)
+
+[node name="EndParticles" type="CPUParticles3D" parent="."]
+amount = 5
+lifetime = 0.2
+explosiveness = 0.11
+randomness = 1.0
+lifetime_randomness = 1.0
+mesh = SubResource("BoxMesh_4l1ci")
+initial_velocity_max = 3.71
+radial_accel_max = 11.65
+tangential_accel_max = 29.13
+damping_max = 15.53
+angle_max = 69.9
+scale_amount_min = 0.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="EndParticles"]
+light_color = Color(1, 0, 0, 1)
+light_energy = 2.0

@@ -1,11 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bmxgp333jsjmh"]
+[gd_scene load_steps=9 format=3 uid="uid://qd65msukttmq"]
 
 [ext_resource type="Script" path="res://Sources/Game.gd" id="1_3xyon"]
 [ext_resource type="PackedScene" uid="uid://cvn2xay2tbt4g" path="res://Levels/Level1.tscn" id="1_gp5ge"]
 [ext_resource type="Script" path="res://Sources/Camera.gd" id="2_07vcb"]
-[ext_resource type="PackedScene" uid="uid://dtlevh1pvx6mt" path="res://GameObjects/Player/Player.tscn" id="2_f24xr"]
+[ext_resource type="PackedScene" uid="uid://ccyc5kkfpps57" path="res://GameObjects/Player/Player.tscn" id="2_f24xr"]
 [ext_resource type="Environment" uid="uid://bib1m1aesqym" path="res://Environment.tres" id="2_r3v8h"]
-[ext_resource type="PackedScene" uid="uid://daucgmqnarnqv" path="res://GameObjects/hook.tscn" id="3_n08tt"]
+[ext_resource type="PackedScene" uid="uid://daucgmqnarnqv" path="res://GameObjects/Hook.tscn" id="3_n08tt"]
 [ext_resource type="PackedScene" uid="uid://brj8xpsqggnn8" path="res://UI.tscn" id="7_7dco0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fldag"]
@@ -25,16 +25,16 @@ environment = ExtResource("2_r3v8h")
 environment = ExtResource("2_r3v8h")
 v_offset = 1.0
 current = true
-fov = 70.0
+fov = 50.0
 script = ExtResource("2_07vcb")
 lerp_speed = 4.0
 target_path = NodePath("../Player")
-offset = Vector3(2, -1, 4)
+offset = Vector3(4, 0.5, 8)
 
 [node name="Player" parent="." instance=ExtResource("2_f24xr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.35391, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.35391, 1.81832, 0)
 speed = 4.0
-active_weapon = 1
+active_weapon = 2
 ability_active_double_jump = true
 ability_active_dash = true
 ability_active_rockets = true

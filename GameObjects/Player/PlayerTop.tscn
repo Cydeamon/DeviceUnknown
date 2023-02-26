@@ -5,7 +5,7 @@
 [node name="RobotTop" instance=ExtResource("1_vt1t6")]
 
 [node name="Armature" parent="." index="0"]
-transform = Transform3D(1.39787e-07, -0.445175, 0.00851554, 0.445256, 1.39773e-07, -2.07339e-09, -6.00161e-10, 0.00851554, 0.445175, 0.00567669, 0.785622, 0)
+transform = Transform3D(-1.93561e-08, -0.444945, 0.0166464, 0.445256, -1.94628e-08, -2.48806e-09, 3.21396e-09, 0.0166464, 0.444945, 0.00567669, 0.785622, 0)
 
 [node name="MiddleBody" parent="Armature" index="0"]
 transform = Transform3D(6.69329e-07, 2.2459, -8.36662e-09, -2.24552, 6.69329e-07, 0.0410237, 0.0410237, 0, 2.24552, -1.74819, -0.00289458, -2.78763e-05)
@@ -14,35 +14,41 @@ transform = Transform3D(6.69329e-07, 2.2459, -8.36662e-09, -2.24552, 6.69329e-07
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.004, 0.745, 0.139)
 
 [node name="Skeleton3D" parent="Armature" index="1"]
-bones/0/rotation = Quaternion(0.438436, -0.00269183, 0.193647, 0.877649)
-bones/1/rotation = Quaternion(0.615728, -0.00444255, 0.260467, 0.74365)
-bones/2/rotation = Quaternion(0.319346, -0.00199371, 0.129038, 0.93881)
-bones/3/position = Vector3(-0.544014, 0.0530031, 1.25095)
-bones/3/rotation = Quaternion(1.12931e-07, 7.07766e-08, -0.999964, 0.00853986)
+transform = Transform3D(1, 6.10623e-16, 1.33227e-15, -1.39888e-14, 1, 7.45058e-09, -1.77636e-15, -7.45058e-09, 1, 0, 0, 0)
+bones/0/rotation = Quaternion(0.724217, -5.39596e-05, 0.00196355, 0.68957)
+bones/0/scale = Vector3(1, 1, 1)
+bones/1/rotation = Quaternion(0.00307647, -0.00117291, 4.18285e-05, 0.999995)
+bones/2/rotation = Quaternion(-0.00349295, -0.000301608, -4.55453e-05, 0.999994)
+bones/3/position = Vector3(0.256475, -0.146525, -0.049525)
+bones/3/rotation = Quaternion(0.000474975, 180, -0.999525, 0.00847497)
 bones/3/scale = Vector3(0.207031, 0.207031, 0.207031)
-bones/4/position = Vector3(4.76837e-07, -0.764658, -6.17059e-07)
-bones/4/rotation = Quaternion(0.253195, -0.670923, -0.653063, 0.243441)
-bones/4/scale = Vector3(0.999999, 0.999999, 0.999998)
-bones/5/rotation = Quaternion(0.00372292, -0.360101, 0.00136392, 0.932905)
-bones/6/rotation = Quaternion(-0.00433801, 0.140867, -0.00054194, 0.990019)
-bones/7/position = Vector3(-0.0919375, -0.673462, 4.21926)
-bones/7/rotation = Quaternion(-0.00630905, -0.981168, 0.03253, 0.190291)
+bones/4/position = Vector3(-0.00763634, 0.625002, 2.71544)
+bones/4/rotation = Quaternion(1.12931e-07, 7.07766e-08, -0.999964, 0.00853986)
+bones/4/scale = Vector3(0.207031, 0.207031, 0.207031)
+bones/5/rotation = Quaternion(-0.301804, 0.390385, 0.869776, 0.00176721)
+bones/6/rotation = Quaternion(0.735447, -0.282423, -0.16696, 0.592857)
+bones/7/enabled = false
+bones/7/position = Vector3(2.0652, 0.213304, 0.605381)
+bones/7/rotation = Quaternion(0.286028, 0.108213, -0.210224, 0.928592)
 bones/7/scale = Vector3(0.15938, 0.15938, 0.15938)
+bones/10/position = Vector3(-0.541117, -0.195109, 1.04282)
+bones/10/rotation = Quaternion(-0.00630905, -0.981168, 0.03253, 0.190291)
+bones/10/scale = Vector3(0.15938, 0.15938, 0.15938)
 
 [node name="RocketsSpawnPoint" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.694247, 0.0203628, 0.719448, 0.000247285, -0.999606, 0.0280535, 0.719737, -0.0192982, -0.693979, -0.555861, 0.635495, 1.26215)
-bone_name = "ArmRight"
-bone_idx = 2
+transform = Transform3D(-0.20703, -0.000571773, 6.3466e-05, 8.46123e-05, -0.00767246, 0.206889, -0.000569028, 0.206888, 0.00767265, 0.251649, 0.723751, 1.71235)
+bone_name = "RocketSpawnPoint"
+bone_idx = 3
 
 [node name="LazerSpawnPoint" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.965264, -0.021787, -0.26036, -0.260759, 0.0179886, 0.965235, -0.0163461, 0.9996, -0.023045, -0.0404629, -0.722918, 1.8572)
-bone_name = "ArmLeft"
-bone_idx = 6
+transform = Transform3D(0.783487, -0.280229, 0.554634, 0.500869, 0.813067, -0.296735, -0.367801, 0.510286, 0.777387, -0.272009, -0.950413, 1.22225)
+bone_name = "LazerSpawnPoint"
+bone_idx = 8
 
 [node name="FireSpawnPoint" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="2"]
-transform = Transform3D(-0.965264, -0.021787, -0.26036, -0.260759, 0.0179886, 0.965235, -0.0163461, 0.9996, -0.023045, -0.0404629, -0.722918, 1.8572)
-bone_name = "ArmLeft"
-bone_idx = 6
+transform = Transform3D(0.783487, -0.280229, 0.554634, 0.500869, 0.813067, -0.296735, -0.367801, 0.510286, 0.777387, -0.539062, -0.798056, 0.822304)
+bone_name = "FireSpawnPoint"
+bone_idx = 9
 
 [node name="AnimationPlayer" parent="." index="1"]
 playback_default_blend_time = 0.3
