@@ -85,9 +85,7 @@ func aim_arm_at_mouse_position():
 	var direction = Vector3(shoulder_global_pos - get_world_mouse_position()).normalized()
 	var angle = Vector3.RIGHT.angle_to(direction)
 	angle = -sign(direction.y) * angle
-	angle = angle - deg_to_rad(10)
-	print(rad_to_deg(angle))
-	print("---------")
+	angle -= 0.174533
 	var quat
 	
 	if target_rotation_y < 0:
@@ -120,8 +118,6 @@ func get_world_mouse_position():
 	
 	if (ray_cast_result.has("position")):
 		result = ray_cast_result["position"]
-	
-	$DebugShape.global_position = result
 	
 	return result
 	

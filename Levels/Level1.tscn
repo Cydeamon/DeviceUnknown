@@ -1,71 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvn2xay2tbt4g"]
+[gd_scene load_steps=3 format=3 uid="uid://cvn2xay2tbt4g"]
 
-[ext_resource type="Material" uid="uid://c5cnn13cgth07" path="res://Materials/cave_mat.tres" id="1_qvqo5"]
 [ext_resource type="PackedScene" uid="uid://v3x3vr4vjc5p" path="res://Assets/Level/Level1_Ground.tscn" id="2_boljo"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_3wnch"]
-size = Vector3(1, 2, 10)
-
-[sub_resource type="BoxMesh" id="BoxMesh_m01ul"]
-size = Vector3(1, 2, 10)
+[ext_resource type="MeshLibrary" uid="uid://baqqxff0s3qec" path="res://Assets/Level/3D Tiles/LevelTiles.meshlib" id="8_htjqb"]
 
 [node name="Node3D" type="Node3D"]
 
 [node name="TempLevel" type="Node3D" parent="."]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="TempLevel"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.21843, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TempLevel/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51628, 0)
-shape = SubResource("BoxShape3D_3wnch")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="TempLevel/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51628, 0)
-mesh = SubResource("BoxMesh_m01ul")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("1_qvqo5")
-
-[node name="StaticBody3D4" type="StaticBody3D" parent="TempLevel"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.90653, 8.73148, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TempLevel/StaticBody3D4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51628, 0)
-shape = SubResource("BoxShape3D_3wnch")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="TempLevel/StaticBody3D4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51628, 0)
-mesh = SubResource("BoxMesh_m01ul")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("1_qvqo5")
-
-[node name="StaticBody3D5" type="StaticBody3D" parent="TempLevel"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6737, 6.49822, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TempLevel/StaticBody3D5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51628, 0)
-shape = SubResource("BoxShape3D_3wnch")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="TempLevel/StaticBody3D5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51628, 0)
-mesh = SubResource("BoxMesh_m01ul")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("1_qvqo5")
-
-[node name="StaticBody3D2" type="StaticBody3D" parent="TempLevel"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.21843, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TempLevel/StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.51678, 0)
-shape = SubResource("BoxShape3D_3wnch")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="TempLevel/StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.5005, 0)
-mesh = SubResource("BoxMesh_m01ul")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("1_qvqo5")
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.578561, -0.749239, 0.322348, 0.39525, 0.603245, 0.692728, -0.713474, -0.273378, 0.645151, 71.567, 42.9395, 26.6759)
 
 [node name="level2" parent="." instance=ExtResource("2_boljo")]
+
+[node name="GridMap" type="GridMap" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+mesh_library = ExtResource("8_htjqb")
+cell_size = Vector3(4, 1, 1)
+cell_center_x = false
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(65536, 65508, 4, 131072, 65508, 4, 196608, 65508, 4, 262144, 65508, 4, 327680, 65508, 4, 327680, 65514, 1, 327680, 65515, 0, 327680, 65516, 2, 327680, 65517, 3, 393216, 65508, 4, 393216, 65517, 3, 458752, 65508, 4, 458752, 65517, 3, 524288, 65508, 4, 524288, 65517, 3, 589824, 65508, 4, 589824, 65509, 1, 589824, 65510, 0, 589824, 65511, 0, 589824, 65512, 2, 589824, 65517, 3, 655360, 65508, 4, 655360, 65517, 3, 720896, 65508, 4, 720896, 65517, 3, 786432, 65508, 4, 786432, 65514, 1, 786432, 65515, 0, 786432, 65516, 2, 786432, 65517, 3, 851968, 65508, 4, 851968, 65517, 3, 131072, 65509, 1, 131072, 65510, 0, 131072, 65511, 0, 131072, 65512, 0, 131072, 65513, 0, 131072, 65514, 2, 196608, 65511, 2, 196608, 65510, 0, 196608, 65509, 1, 524288, 65512, 1, 524288, 65513, 2)
+}
