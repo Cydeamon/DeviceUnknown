@@ -1,5 +1,7 @@
 extends Node3D
 
+var is_environment_light_on = true
+
 func _ready():
 	$Player/Hook/CollisionShape3D.disabled = true
 
@@ -15,3 +17,16 @@ func draw_dash_ui():
 			$UI/UI/HBoxContainer/DashLabel.text = "Dash cooling down: "	+ str(round($Player/Timers/DashCooldown.time_left))
 		else:
 			$UI/UI/HBoxContainer/DashLabel.text = "Dash is ready"
+
+
+func _on_environment_light_switch_off_body_entered(body):
+	if body.editor_description == "Player" && is_environment_light_on:
+		$AnimationPlayer.play("EnvironmentLightOff")
+		is_environment_light_on = false
+		$LevelContainer/Level/CaveWallBack.show()
+	
+func _on_environment_light_switch_on_body_entered(body):
+	if body.editor_description == "Player" && !is_environment_light_on:
+		$AnimationPlayer.play("EnvironmentLightOn")
+		is_environment_light_on = true
+		$LevelContainer/Level/CaveWallBack.hide()

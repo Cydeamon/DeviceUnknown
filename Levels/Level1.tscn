@@ -1,16 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvn2xay2tbt4g"]
+[gd_scene load_steps=7 format=3 uid="uid://cvn2xay2tbt4g"]
 
 [ext_resource type="PackedScene" uid="uid://v3x3vr4vjc5p" path="res://Assets/Level/Level1_Ground.tscn" id="2_boljo"]
+[ext_resource type="PackedScene" uid="uid://bo866to03aj2o" path="res://GameObjects/CaveEntrance.tscn" id="2_c883u"]
+[ext_resource type="PackedScene" uid="uid://dvqjy056r7kj7" path="res://GameObjects/CameraPropsTrigger.tscn" id="4_hatbv"]
+[ext_resource type="Material" uid="uid://c5cnn13cgth07" path="res://Materials/cave_mat.tres" id="5_on6mo"]
 [ext_resource type="MeshLibrary" uid="uid://baqqxff0s3qec" path="res://Assets/Level/3D Tiles/LevelTiles.meshlib" id="8_htjqb"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dh5b4"]
+size = Vector2(1000, 1000)
+subdivide_width = 1
 
 [node name="Node3D" type="Node3D"]
 
 [node name="TempLevel" type="Node3D" parent="."]
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.578561, -0.749239, 0.322348, 0.39525, 0.603245, 0.692728, -0.713474, -0.273378, 0.645151, 71.567, 42.9395, 26.6759)
-
-[node name="level2" parent="." instance=ExtResource("2_boljo")]
 
 [node name="GridMap" type="GridMap" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -19,5 +21,36 @@ cell_size = Vector3(4, 1, 1)
 cell_center_x = false
 cell_center_y = false
 data = {
-"cells": PackedInt32Array(65536, 65508, 4, 131072, 65508, 4, 196608, 65508, 4, 262144, 65508, 4, 327680, 65508, 4, 327680, 65514, 1, 327680, 65515, 0, 327680, 65516, 2, 327680, 65517, 3, 393216, 65508, 4, 393216, 65517, 3, 458752, 65508, 4, 458752, 65517, 3, 524288, 65508, 4, 524288, 65517, 3, 589824, 65508, 4, 589824, 65509, 1, 589824, 65510, 0, 589824, 65511, 0, 589824, 65512, 2, 589824, 65517, 3, 655360, 65508, 4, 655360, 65517, 3, 720896, 65508, 4, 720896, 65517, 3, 786432, 65508, 4, 786432, 65514, 1, 786432, 65515, 0, 786432, 65516, 2, 786432, 65517, 3, 851968, 65508, 4, 851968, 65517, 3, 131072, 65509, 1, 131072, 65510, 0, 131072, 65511, 0, 131072, 65512, 0, 131072, 65513, 0, 131072, 65514, 2, 196608, 65511, 2, 196608, 65510, 0, 196608, 65509, 1, 524288, 65512, 1, 524288, 65513, 2)
+"cells": PackedInt32Array(524288, 65219, 0, 524288, 65220, 0, 524288, 65221, 0, 524288, 65222, 0, 524288, 65223, 0, 524288, 65224, 0, 524288, 65225, 0, 524288, 65226, 0, 524288, 65227, 0, 524288, 65228, 0, 524288, 65229, 0, 524288, 65230, 0, 524288, 65231, 0, 524288, 65232, 0, 524288, 65233, 0, 524288, 65218, 0, 524288, 65217, 0, 524288, 65216, 0, 524288, 65215, 0, 524288, 65214, 0, 524288, 65213, 0, 524288, 65212, 0, 524288, 65211, 0, 524288, 65210, 0)
 }
+metadata/_editor_floor_ = Vector3(1, 0, 0)
+
+[node name="level2" parent="." instance=ExtResource("2_boljo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -38.6114)
+
+[node name="CaveEntrance" type="Node" parent="."]
+
+[node name="CaveEntrance" parent="CaveEntrance" instance=ExtResource("2_c883u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -245.778, 13.1974, 0)
+
+[node name="CameraPropsTrigger" parent="CaveEntrance" instance=ExtResource("4_hatbv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -243.663, 14.4014, 0)
+lerp_speed = 2.0
+offset = Vector3(1, -1, 3)
+
+[node name="CameraPropsTrigger4" parent="CaveEntrance" instance=ExtResource("4_hatbv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -250.831, 14.8977, 0)
+lerp_speed = 2.0
+offset = Vector3(1, -1, 3)
+
+[node name="CameraPropsTrigger2" parent="CaveEntrance" instance=ExtResource("4_hatbv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -254.059, 14.9404, 0)
+
+[node name="CameraPropsTrigger3" parent="CaveEntrance" instance=ExtResource("4_hatbv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -237.962, 13.9073, 0)
+
+[node name="CaveWallBack" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, -502.676, -202.394, -218.66)
+visible = false
+mesh = SubResource("PlaneMesh_dh5b4")
+surface_material_override/0 = ExtResource("5_on6mo")

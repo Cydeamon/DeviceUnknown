@@ -1,7 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://qb4rrwfl66af"]
+[gd_scene load_steps=11 format=3 uid="uid://qb4rrwfl66af"]
 
 [ext_resource type="ArrayMesh" uid="uid://cfuoic4n2cvmb" path="res://Assets/Level/3D Tiles/Platform.obj" id="1_m14d1"]
-[ext_resource type="Material" uid="uid://c5cnn13cgth07" path="res://Materials/cave_mat.tres" id="2_mv4km"]
 [ext_resource type="ArrayMesh" uid="uid://bd4s366kl4ijo" path="res://Assets/Level/3D Tiles/PlatformEnd.obj" id="3_60mkv"]
 [ext_resource type="ArrayMesh" uid="uid://c3ltijwmjaxvv" path="res://Assets/Level/3D Tiles/PlatformStart.obj" id="4_is2bm"]
 [ext_resource type="ArrayMesh" uid="uid://drn0mntkop45t" path="res://Assets/Level/3D Tiles/WallLeft.obj" id="5_wfbmw"]
@@ -26,7 +25,6 @@ points = PackedVector3Array(1.99584, 1.0004, -0.0285707, 1.99584, 1.0004, -0.937
 
 [node name="Platform" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_m14d1")
-surface_material_override/0 = ExtResource("2_mv4km")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Platform"]
 
@@ -36,7 +34,6 @@ shape = SubResource("ConvexPolygonShape3D_5gfhh")
 [node name="PlatformEnd" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.11)
 mesh = ExtResource("3_60mkv")
-surface_material_override/0 = ExtResource("2_mv4km")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="PlatformEnd"]
 
@@ -46,7 +43,6 @@ shape = SubResource("ConvexPolygonShape3D_wby80")
 [node name="PlatformStart" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.11)
 mesh = ExtResource("4_is2bm")
-surface_material_override/0 = ExtResource("2_mv4km")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="PlatformStart"]
 
@@ -54,8 +50,8 @@ surface_material_override/0 = ExtResource("2_mv4km")
 shape = SubResource("ConvexPolygonShape3D_aau0p")
 
 [node name="WallLeft" type="MeshInstance3D" parent="."]
+visible = false
 mesh = ExtResource("5_wfbmw")
-surface_material_override/0 = ExtResource("2_mv4km")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="WallLeft"]
 
@@ -63,8 +59,8 @@ surface_material_override/0 = ExtResource("2_mv4km")
 shape = SubResource("ConvexPolygonShape3D_e2ro0")
 
 [node name="WallRight" type="MeshInstance3D" parent="."]
+visible = false
 mesh = ExtResource("6_3dve4")
-surface_material_override/0 = ExtResource("2_mv4km")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="WallRight"]
 
