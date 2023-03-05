@@ -5,5 +5,10 @@ extends Area3D
 
 func _on_body_entered(body):
 	if body.editor_description == "Player":
-		get_viewport().get_camera_3d().lerp_speed = lerp_speed
+		get_viewport().get_camera_3d().lerp_speed = 2
 		get_viewport().get_camera_3d().offset = offset
+		$CameraLerpTimer.start()
+
+
+func _on_camera_lerp_timer_timeout():
+	get_viewport().get_camera_3d().lerp_speed = lerp_speed

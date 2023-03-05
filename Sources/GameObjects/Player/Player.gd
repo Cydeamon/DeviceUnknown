@@ -76,6 +76,7 @@ func _process(delta):
 			fire()
 	else:		
 		$Lazer.hide()
+		$Flame.hide()
 		
 func aim_arm_at_mouse_position():
 	var shoulder_global_pos : Vector3
@@ -152,12 +153,19 @@ func fire():
 		fire_lazer()
 	if active_weapon == Weapon.ROCKETS:
 		fire_rocket()
+	if active_weapon == Weapon.FIRE:
+		fire_flame()
 		
 
 func fire_lazer():
 	$Lazer.global_rotation = $RobotTop/Armature/Skeleton3D/LazerSpawnPoint.global_rotation
 	$Lazer.global_position = $RobotTop/Armature/Skeleton3D/LazerSpawnPoint.global_position	
 	$Lazer.show()	
+	
+func fire_flame():
+	$Flame.global_rotation = $RobotTop/Armature/Skeleton3D/FireSpawnPoint.global_rotation
+	$Flame.global_position = $RobotTop/Armature/Skeleton3D/FireSpawnPoint.global_position	
+	$Flame.show()	
 	
 	
 func fire_rocket():	

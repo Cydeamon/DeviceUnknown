@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dsp8qs63dwiid"
+path="res://.godot/imported/Ceiling.obj-4ecdfec6fb36047736fb384daf25e882.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Ceiling.obj-4ecdfec6fb36047736fb384daf25e882.mesh"]
+
+source_file="res://Assets/Level/3D Tiles/Ceiling.obj"
+dest_files=["res://.godot/imported/Ceiling.obj-4ecdfec6fb36047736fb384daf25e882.mesh", "res://.godot/imported/Ceiling.obj-4ecdfec6fb36047736fb384daf25e882.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

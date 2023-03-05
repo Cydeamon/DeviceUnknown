@@ -23,10 +23,8 @@ func _on_environment_light_switch_off_body_entered(body):
 	if body.editor_description == "Player" && is_environment_light_on:
 		$AnimationPlayer.play("EnvironmentLightOff")
 		is_environment_light_on = false
-		$LevelContainer/Level/CaveWallBack.show()
 	
 func _on_environment_light_switch_on_body_entered(body):
 	if body.editor_description == "Player" && !is_environment_light_on:
 		$AnimationPlayer.play("EnvironmentLightOn")
 		is_environment_light_on = true
-		$LevelContainer/Level/CaveWallBack.hide()

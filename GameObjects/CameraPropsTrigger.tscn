@@ -1,9 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://dvqjy056r7kj7"]
+[gd_scene load_steps=5 format=3 uid="uid://dvqjy056r7kj7"]
 
 [ext_resource type="Script" path="res://Sources/GameObjects/CameraPropsTrigger.gd" id="1_0mkqa"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vou5o"]
-size = Vector3(3, 3, 3)
+size = Vector3(0.3, 3, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_x5e8p"]
+size = Vector3(0.3, 3, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qtlsl"]
+transparency = 1
+albedo_color = Color(1, 0, 0, 0.168627)
 
 [node name="CameraPropsTrigger" type="Area3D"]
 script = ExtResource("1_0mkqa")
@@ -11,4 +18,12 @@ script = ExtResource("1_0mkqa")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_vou5o")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_x5e8p")
+surface_material_override/0 = SubResource("StandardMaterial3D_qtlsl")
+
+[node name="CameraLerpTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="CameraLerpTimer" to="." method="_on_camera_lerp_timer_timeout"]

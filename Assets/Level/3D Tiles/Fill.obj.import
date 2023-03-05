@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://jhdg4356kdp1"
+path="res://.godot/imported/Fill.obj-1354deb143550e3db28f8da57023bdd3.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Fill.obj-1354deb143550e3db28f8da57023bdd3.mesh"]
+
+source_file="res://Assets/Level/3D Tiles/Fill.obj"
+dest_files=["res://.godot/imported/Fill.obj-1354deb143550e3db28f8da57023bdd3.mesh", "res://.godot/imported/Fill.obj-1354deb143550e3db28f8da57023bdd3.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
